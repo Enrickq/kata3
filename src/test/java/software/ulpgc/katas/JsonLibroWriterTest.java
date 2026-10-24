@@ -41,5 +41,6 @@ class JsonLibroWriterTest {
         var json = JsonParser.parseString(destino.toString()).getAsJsonObject();
         assertThat(json.getAsJsonArray("libros").size()).isZero();
         assertThat(json.getAsJsonObject("resumen").get("validos").getAsInt()).isZero();
+        assertThat(json.getAsJsonObject("resumen").get("totalProcesados").getAsInt()).isZero();
     }
 }

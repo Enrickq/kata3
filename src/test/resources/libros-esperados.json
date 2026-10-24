@@ -23,6 +23,7 @@
   ],
   "resumen": {
     "validos": 4,
-    "descartados": 2
+    "descartados": 2,
+    "totalProcesados": 6
   }
 }

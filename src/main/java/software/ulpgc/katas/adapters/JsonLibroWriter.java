@@ -12,7 +12,10 @@ public class JsonLibroWriter {
     public void write(ResultadoParseo resultado, Writer destino) {
         var documento = new DocumentoJson(
                 resultado.libros(),
-                new DocumentoJson.Resumen(resultado.libros().size(), resultado.descartados())
+                new DocumentoJson.Resumen(
+                        resultado.libros().size(),
+                        resultado.descartados(),
+                        resultado.libros().size() + resultado.descartados())
         );
         gson.toJson(documento, destino);
     }

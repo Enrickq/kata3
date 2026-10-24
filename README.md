@@ -1,22 +1,20 @@
-# Kata 3 — Repetición 1
+# Kata 3 — Repetición 2
 
-Primera reconstrucción del ejercicio de transformación CSV a objetos
-Java y serialización JSON con Gson.
+Segunda reconstrucción de la transformación CSV a objetos Java
+y serialización JSON con Gson.
+
+Esta repetición amplía el dataset y añade un registro
+con un año no numérico.
+
+Resultado: 4 libros válidos y 2 descartados.
 
 ## Requisitos
-- JDK 27
-- Maven
-
-## Compilación y pruebas
-mvn clean test
+JDK 27 y Maven.
 
 ## Ejecución
+mvn clean test
 mvn exec:java
 
-## Archivos
-- Entrada: src/main/resources/libros.csv
-- JSON esperado: src/test/resources/libros-esperados.json
-- Salida generada: target/salida/libros.json
-
 ## Repeticiones
-Esta es la primera de las tres reconstrucciones previstas.
+- kata3-r1: primera reconstrucción.
+- kata3-r2: segunda reconstrucción.

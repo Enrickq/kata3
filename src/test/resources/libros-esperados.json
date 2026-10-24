@@ -14,10 +14,15 @@
       "titulo": "Design Patterns",
       "autor": "Gamma et al.",
       "anio": 1994
+    },
+    {
+      "titulo": "Working Effectively with Legacy Code",
+      "autor": "Michael Feathers",
+      "anio": 2004
     }
   ],
   "resumen": {
-    "validos": 3,
-    "descartados": 1
+    "validos": 4,
+    "descartados": 2
   }
 }

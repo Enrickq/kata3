@@ -1,4 +1,4 @@
-# Maven
+# Maven y salidas locales
 target/
 out/
 build/
@@ -14,7 +14,7 @@ bin/
 .idea/
 *.iml
 
-# Sistema operativo
+# Sistema operativo y ficheros temporales
 .DS_Store
 Thumbs.db
 *.tmp

@@ -1,0 +1,23 @@
+{
+  "libros": [
+    {
+      "titulo": "Clean Code",
+      "autor": "Robert C. Martin",
+      "anio": 2008
+    },
+    {
+      "titulo": "Refactoring",
+      "autor": "Martin Fowler",
+      "anio": 2018
+    },
+    {
+      "titulo": "Design Patterns",
+      "autor": "Gamma et al.",
+      "anio": 1994
+    }
+  ],
+  "resumen": {
+    "validos": 3,
+    "descartados": 1
+  }
+}

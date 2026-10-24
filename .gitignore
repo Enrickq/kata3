@@ -1,0 +1,20 @@
+# Maven
+target/
+out/
+build/
+bin/
+*.class
+*.jar
+*.war
+*.zip
+*.exe
+*.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+*.tmp

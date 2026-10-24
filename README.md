@@ -1,55 +1,81 @@
 # Kata 3 — Transformación de datos a JSON
 
 ## Objetivo
-Convertir un CSV sencillo de libros en objetos de dominio, descartar registros inválidos y generar un fichero JSON con la colección y un resumen calculado. No requiere conexión a internet durante la ejecución.
 
-## Requisitos y dependencias
-- JDK 27
-- Apache Maven 3.9 o compatible
-- Gson 2.14.0 para serializar JSON
-- JUnit Jupiter 5.11.4 y AssertJ 3.27.3 para pruebas
+Aplicación desarrollada en Java 27 que transforma un dataset CSV de libros en objetos de dominio y genera un fichero JSON con la colección de registros válidos y un resumen calculado.
 
-## Compilar, probar y ejecutar
-Desde la raíz del repositorio:
+El ejercicio separa lectura, parsing, validación, transformación y serialización.
 
-```bash
-mvn clean test
-mvn exec:java
-```
+## Tecnologías
 
-Entrada predeterminada: `src/main/resources/libros.csv`.
-Salida predeterminada: `target/salida/libros.json` (se genera al ejecutar; no se versiona).
-También puedes indicar rutas propias:
+- Java 27
+- Maven
+- Gson 2.14.0
+- JUnit Jupiter 5.11.4
+- AssertJ 3.27.3
 
-```bash
-mvn exec:java -Dexec.args="mis-libros.csv target/salida/resultado.json"
-```
+## Compilación y ejecución
 
-**Formato admitido:** CSV sencillo con cabecera exacta `titulo,autor,anio` y tres campos por fila, sin comas internas entrecomilladas. Se descartan campos vacíos, filas con distinto número de columnas, años no numéricos y años menores o iguales que cero. Un fichero vacío genera una lista y un resumen vacíos. Una cabecera incorrecta provoca un error explícito.
+Desde la raíz del proyecto:
 
-## Estructura y responsabilidades
-- `domain/model/Libro`: entidad del dominio, independiente del formato de origen.
-- `domain/model/ResultadoParseo`: resultado de la transformación y número de descartes.
-- `adapters/CsvReader`: lectura desde cualquier `Reader`; no decide qué filas son válidas.
-- `adapters/CsvLibroParser`: comprueba cabecera, valida cada fila y crea objetos `Libro`.
-- `adapters/DocumentoJson`: estructura JSON de salida y metadatos.
-- `adapters/JsonLibroWriter`: serializa con Gson objetos ya validados, sin volver a analizarlos.
-- `Main`: coordina las dependencias y administra los ficheros.
+`mvn clean test`
 
-## Ejemplo y verificación
-Entrada de ejemplo: `src/main/resources/libros.csv`.
-Salida JSON esperada: `src/test/resources/libros-esperados.json`.
-El programa produce cuatro libros válidos y descarta dos filas. El resumen incluye `validos`, `descartados` y `totalProcesados`.
+`mvn exec:java`
 
-Las pruebas de `mvn clean test` verifican: filas válidas e inválidas, cabecera errónea, dataset vacío, equivalencia de lectura desde memoria/recurso y comparación estructural del JSON generado con el JSON esperado, que se vuelve a parsear mediante Gson.
+La entrada predeterminada es `src/main/resources/libros.csv`.
+
+La salida se genera en `target/salida/libros.json`.
+
+También se pueden indicar rutas:
+
+`mvn exec:java -Dexec.args="mis-libros.csv target/salida/resultado.json"`
+
+## Estructura
+
+- `Libro`: entidad de dominio independiente de CSV y JSON.
+- `ResultadoParseo`: contiene los libros válidos y el número de descartes.
+- `CsvReader`: lectura a partir de un Reader.
+- `CsvLibroParser`: interpretación y validación de registros.
+- `DocumentoJson`: representación de la salida y sus metadatos.
+- `JsonLibroWriter`: serialización con Gson.
+- `Main`: coordinación del proceso y de los archivos.
+
+## Formato de entrada
+
+CSV sencillo con cabecera `titulo,autor,anio`.
+
+Cada fila debe contener tres campos. No se admiten campos vacíos, años no numéricos ni años menores o iguales que cero.
+
+Esta implementación no contempla comas internas entrecomilladas.
+
+## Resultado esperado
+
+El dataset final contiene cuatro libros válidos y dos registros descartados.
+
+El bloque `resumen` incluye:
+
+- `validos`: 4
+- `descartados`: 2
+- `totalProcesados`: 6
+
+Los ejemplos están en `src/main/resources/libros.csv` y `src/test/resources/libros-esperados.json`.
+
+## Verificación
+
+Las pruebas JUnit y AssertJ comprueban los registros válidos e inválidos, la cabecera, la entrada vacía, la lectura desde diferentes orígenes y la equivalencia estructural del JSON generado con el esperado.
+
+La salida generada se vuelve a interpretar con Gson para verificar que es JSON válido.
 
 ## Repetición deliberada
-El mismo ejercicio se reconstruyó tres veces manteniendo lector, parser, transformación y serializador:
-1. `kata3-r1`: primera ejecución con dataset reducido.
-2. `kata3-r2`: reconstrucción con un dataset ligeramente ampliado y más filas inválidas.
-3. `kata3-r3`: reconstrucción final que añade el metadato `totalProcesados`.
 
-La rama principal `main` contiene la tercera versión, evaluable. Las versiones anteriores pueden consultarse en sus tags.
+La kata se ha reconstruido tres veces manteniendo el mismo objetivo y las mismas responsabilidades principales.
+
+- `kata3-r1`: primera reconstrucción con un dataset reducido.
+- `kata3-r2`: segunda reconstrucción con un dataset ampliado y otro caso inválido.
+- `kata3-r3`: tercera reconstrucción con el metadato adicional `totalProcesados`.
+
+La rama `main` contiene la versión final y las etiquetas permiten consultar los estados anteriores.
 
 ## Vídeo explicativo
-**Pendiente de enlazar tras subir el vídeo a YouTube.**
+
+Pendiente de publicar.

@@ -53,4 +53,14 @@ class CsvLibroParserTest {
             assertThat(recurso).isEqualTo(memoria);
         }
     }
+
+    @Test
+    void descartaLibroConAnioCero() {
+        var resultado = parser.parse(
+                List.of("titulo,autor,anio", "Clean code, Robert C. Martin, 0")
+        );
+
+        assertThat(resultado.libros()).isEmpty();
+        assertThat(resultado.descartados()).isEqualTo(1);
+    }
 }

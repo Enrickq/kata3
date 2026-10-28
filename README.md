@@ -2,7 +2,8 @@
 
 ## Objetivo
 
-Aplicación desarrollada en Java 27 que transforma un dataset CSV de libros en objetos de dominio y genera un fichero JSON con la colección de registros válidos y un resumen calculado.
+Aplicación desarrollada en Java 27 que transforma un dataset CSV de libros en objetos de dominio y genera un fichero
+JSON con la colección de registros válidos y un resumen calculado.
 
 El ejercicio separa lectura, parsing, validación, transformación y serialización.
 
@@ -62,9 +63,15 @@ Los ejemplos están en `src/main/resources/libros.csv` y `src/test/resources/lib
 
 ## Verificación
 
-Las pruebas JUnit y AssertJ comprueban los registros válidos e inválidos, la cabecera, la entrada vacía, la lectura desde diferentes orígenes y la equivalencia estructural del JSON generado con el esperado.
+Las pruebas JUnit y AssertJ comprueban los registros válidos e inválidos, la cabecera, la entrada vacía, la lectura
+desde diferentes orígenes y la equivalencia estructural del JSON generado con el esperado.
 
 La salida generada se vuelve a interpretar con Gson para verificar que es JSON válido.
+
+También se comprueba que los registros con año de publicación
+igual a cero se descartan correctamente.
+
+La verificación se ejecuta mediante `mvn clean test`.
 
 ## Repetición deliberada
 
@@ -78,4 +85,8 @@ La rama `main` contiene la versión final y las etiquetas permiten consultar los
 
 ## Vídeo explicativo
 
-Pendiente de publicar.
+[Ver presentación de la Kata 3 en YouTube](https://youtu.be/5LIhkl2nr2k)
+
+Vídeo explicativo de la transformación de datos CSV a JSON,
+la separación de responsabilidades, las pruebas automatizadas
+y las tres repeticiones de la kata
